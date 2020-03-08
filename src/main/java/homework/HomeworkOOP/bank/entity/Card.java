@@ -1,4 +1,4 @@
-package homework.HomeworkOOP.entity;
+package homework.HomeworkOOP.bank.entity;
 
 public class Card {
     private int expirationDate;
