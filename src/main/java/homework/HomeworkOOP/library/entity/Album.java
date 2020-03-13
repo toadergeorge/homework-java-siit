@@ -2,19 +2,19 @@ package homework.HomeworkOOP.library.entity;
 
 public class Album extends  Book {
 
-    private String paperQuality;
+    private int paperQuality;
 
-    public Album(String paperQuality, String name, int numberOfPages)
+    public Album(int paperQuality, String name, int numberOfPages)
     {
         super(name, numberOfPages);
         this.paperQuality = paperQuality;
     }
 
-    public String getPaperQuality() {
+    public int getPaperQuality() {
         return paperQuality;
     }
 
-    public void setPaperQuality(String paperQuality) {
+    public void setPaperQuality(int paperQuality) {
         this.paperQuality = paperQuality;
     }
 }
