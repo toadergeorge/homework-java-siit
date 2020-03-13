@@ -68,15 +68,18 @@ public class LibraryCatalog {
         System.out.println("Select book index that you want to remove :");
         int bookRemoveIndex = scanner.nextInt();
 
+        try {
+            Book bookToRemove = bookList.get(bookRemoveIndex);
 
+            boolean containsBook = bookList.contains(bookToRemove);
+            if (containsBook) {
+                bookList.remove(bookToRemove);
+                System.out.println("Book removed successfully");
+            } else {
+                System.out.println("Book index not found!");
+            }
 
-        Book bookToRemove = bookList.get(bookRemoveIndex);
-
-        boolean containsBook = bookList.contains(bookToRemove);
-        if (containsBook) {
-            bookList.remove(bookToRemove);
-            System.out.println("Book removed successfully");
-        } else {
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Book index not found!");
         }
     }
@@ -140,28 +143,34 @@ public class LibraryCatalog {
     }
 
     public static void listBooks(List<Book> bookList) {
-        int counter = 0;
-        for (Book book : bookList) {
 
-            System.out.println("Book index is " + counter);
-            if (book instanceof Novel) {
-                Novel novelBook = (Novel) book;
-
-                System.out.println("Book type is Novel");
-                System.out.println("Novel type is " + novelBook.getType());
-            }
-
-            if (book instanceof Album) {
-                Album albumBook = (Album) book;
-
-                System.out.println("Book type is Album");
-                System.out.println("Album paper quality is " + albumBook.getPaperQuality());
-            }
-
-            System.out.println("Book name is " + book.getName());
-            System.out.println("Book number of pages is " + book.getNumberOfPages());
+        if (bookList.size() == 0) {
+            System.out.println("There are no books in list");
             System.out.println("=================================");
-            counter++;
+        } else {
+            for (Book book : bookList) {
+
+                int index = bookList.indexOf(book);
+
+                System.out.println("Book index is " + index);
+                if (book instanceof Novel) {
+                    Novel novelBook = (Novel) book;
+
+                    System.out.println("Book type is Novel");
+                    System.out.println("Novel type is " + novelBook.getType());
+                }
+
+                if (book instanceof Album) {
+                    Album albumBook = (Album) book;
+
+                    System.out.println("Book type is Album");
+                    System.out.println("Album paper quality is " + albumBook.getPaperQuality());
+                }
+
+                System.out.println("Book name is " + book.getName());
+                System.out.println("Book number of pages is " + book.getNumberOfPages());
+                System.out.println("=================================");
+            }
         }
     }
 
