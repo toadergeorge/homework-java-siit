@@ -99,47 +99,57 @@ public class LibraryCatalog {
             Book editBook = bookList.get(bookEditIndex);
 
             if (editBook instanceof Album) {
-                Album editAlbum = (Album) editBook;
-
-                System.out.println("Old pixel quality value is " + editAlbum.getPaperQuality() + ", type new value: ");
-                int albumQuality = scanner.nextInt();
-
-                System.out.println("Old album name value is " + editAlbum.getName() + ", type new value: ");
-                String albumName = scanner.next();
-
-                System.out.println("Old album number of pages value is " + editAlbum.getNumberOfPages() + ", type new value: ");
-                int albumPages = scanner.nextInt();
-
-                Album editAlbumNew = new Album(albumQuality, albumName, albumPages);
-                bookList.set(bookEditIndex, editAlbumNew);
-
-                System.out.println("Book was edited with succes!");
-                System.out.println("If you want to go back to the main menu type -2 or -1 to edit another book! ");
-                bookEditIndex = scanner.nextInt();
+                bookEditIndex = getBookEditIndex(scanner, bookList, bookEditIndex, (Album) editBook);
 
             } else if (editBook instanceof Novel) {
-                Novel editNovel = (Novel) editBook;
-
-                System.out.println("Old novel type value is " + editNovel.getType() + ", type new value: ");
-                String novelType = scanner.next();
-
-                System.out.println("Old novel name value is " + editNovel.getName() + ", type new value: ");
-                String novelName = scanner.next();
-
-                System.out.println("Old novel number of pages value is " + editNovel.getNumberOfPages() + ", type new value: ");
-                int novelPages = scanner.nextInt();
-
-                Novel editNovelNew = new Novel(novelType, novelName, novelPages);
-                bookList.set(bookEditIndex, editNovelNew);
-
-                System.out.println("Book was edited with succes!");
-                System.out.println("If you want to go back to the main menu type -2 or -1 to edit another book! ");
-                bookEditIndex = scanner.nextInt();
+                bookEditIndex = getBookEditIndex(scanner, bookList, bookEditIndex, (Novel) editBook);
             } else {
                 System.out.println("Book not found! Try again!");
             }
             beginEdit = false;
         }
+    }
+
+    private static int getBookEditIndex(Scanner scanner, List<Book> bookList, int bookEditIndex, Novel editBook) {
+        Novel editNovel = editBook;
+
+        System.out.println("Old novel type value is " + editNovel.getType() + ", type new value: ");
+        String novelType = scanner.next();
+
+        System.out.println("Old novel name value is " + editNovel.getName() + ", type new value: ");
+        String novelName = scanner.next();
+
+        System.out.println("Old novel number of pages value is " + editNovel.getNumberOfPages() + ", type new value: ");
+        int novelPages = scanner.nextInt();
+
+        Novel editNovelNew = new Novel(novelType, novelName, novelPages);
+        bookList.set(bookEditIndex, editNovelNew);
+
+        System.out.println("Book was edited with succes!");
+        System.out.println("If you want to go back to the main menu type -2 or -1 to edit another book! ");
+        bookEditIndex = scanner.nextInt();
+        return bookEditIndex;
+    }
+
+    private static int getBookEditIndex(Scanner scanner, List<Book> bookList, int bookEditIndex, Album editBook) {
+        Album editAlbum = editBook;
+
+        System.out.println("Old pixel quality value is " + editAlbum.getPaperQuality() + ", type new value: ");
+        int albumQuality = scanner.nextInt();
+
+        System.out.println("Old album name value is " + editAlbum.getName() + ", type new value: ");
+        String albumName = scanner.next();
+
+        System.out.println("Old album number of pages value is " + editAlbum.getNumberOfPages() + ", type new value: ");
+        int albumPages = scanner.nextInt();
+
+        Album editAlbumNew = new Album(albumQuality, albumName, albumPages);
+        bookList.set(bookEditIndex, editAlbumNew);
+
+        System.out.println("Book was edited with succes!");
+        System.out.println("If you want to go back to the main menu type -2 or -1 to edit another book! ");
+        bookEditIndex = scanner.nextInt();
+        return bookEditIndex;
     }
 
     public static void listBooks(List<Book> bookList) {
