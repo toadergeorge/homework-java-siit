@@ -1,5 +1,8 @@
 package homework.HomeworkOOP.library.entity;
 
+import lombok.Setter;
+
+@Setter
 public class Album extends  Book {
 
     private int paperQuality;
