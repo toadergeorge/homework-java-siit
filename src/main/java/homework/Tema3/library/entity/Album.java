@@ -1,4 +1,4 @@
-package homework.HomeworkOOP.library.entity;
+package homework.Tema3.library.entity;
 
 import lombok.Setter;
 

@@ -1,9 +1,9 @@
-package homework.HomeworkOOP.bank;
+package homework.Tema3.bank;
 
-import homework.HomeworkOOP.bank.entity.BankAccount;
-import homework.HomeworkOOP.bank.entity.Card;
-import homework.HomeworkOOP.bank.entity.Pos;
-import homework.HomeworkOOP.bank.entity.User;
+import homework.Tema3.bank.entity.BankAccount;
+import homework.Tema3.bank.entity.Card;
+import homework.Tema3.bank.entity.Pos;
+import homework.Tema3.bank.entity.User;
 
 public class HomeworkOopBank {
     public static void main(String[] args) throws Exception {

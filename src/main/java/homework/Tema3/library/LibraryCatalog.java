@@ -1,8 +1,8 @@
-package homework.HomeworkOOP.library;
+package homework.Tema3.library;
 
-import homework.HomeworkOOP.library.entity.Album;
-import homework.HomeworkOOP.library.entity.Book;
-import homework.HomeworkOOP.library.entity.Novel;
+import homework.Tema3.library.entity.Album;
+import homework.Tema3.library.entity.Book;
+import homework.Tema3.library.entity.Novel;
 
 import java.util.ArrayList;
 import java.util.List;

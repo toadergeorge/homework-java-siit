@@ -1,4 +1,4 @@
-package homework;
+package homework.Tema1;
 
 import java.lang.reflect.Array;
 import java.math.BigDecimal;

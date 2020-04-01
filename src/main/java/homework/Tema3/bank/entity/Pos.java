@@ -1,4 +1,4 @@
-package homework.HomeworkOOP.bank.entity;
+package homework.Tema3.bank.entity;
 
 import java.util.ArrayList;
 import java.util.List;
