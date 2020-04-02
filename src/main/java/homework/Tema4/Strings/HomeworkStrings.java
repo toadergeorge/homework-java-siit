@@ -81,14 +81,166 @@ public class HomeworkStrings {
 //        String stringPalindrome = "capac";
 //        System.out.println("Ex. 13 ===============");
 //        System.out.println("String is palindrome :" + isPalindrome(stringPalindrome));
-
-
-        //14. Write a method to find the length of the longest substring without repeating characters.
+//        //14. Write a method to find the length of the longest substring without repeating characters.
 //        String stringPalindrome = "capac";
 //        System.out.println("Ex. 13 ===============");
 //        System.out.println("String is palindrome :" + isPalindrome(stringPalindrome));
+//        //15. Write a method to find the length of the longest substring without repeating characters.
+//        String longestSubstring = "abcdefgacd";
+//        System.out.println("Ex. 15 ===============");
+//        System.out.println("Largest substring :" + getLargestSubstring(longestSubstring));
+
+//        //16. Given string str, write a method to find the longest palindromic substring in str.
+//        String longestPalindromicSubstring = "abracadabra";
+//        System.out.println("Ex. 16 ===============");
+//        System.out.println("Largest substring palindrom:" + getLargestPalindromicSubstring(longestPalindromicSubstring));
+//        //17. Write a method to remove the duplicate character from String.
+//        String stringWithDuplicates = "aabboccssk";
+//        System.out.println("Ex. 17 ===============");
+//        System.out.println("String without duplicates :" + getStringWithoutDuplicates(stringWithDuplicates));
+//        //18. Write a method to remove a given character from String.
+//        char charToRemove = 'a';
+//        String stringForRemoval = "aabboccssk";
+//        System.out.println("Ex. 18 ===============");
+//        System.out.println("String after remove :" + removeCharFromString(stringForRemoval, charToRemove));
+
+//        //19. Given an array of strings, find the most frequent word in a given array, I mean, the string that appears the most in the array.
+//        In the case of a tie, ​the string that is the smallest (lexicographically) ​is printed.
+//        String[] stringsArray = {"gad", "gad", "corona", "virus", "god", "god"};
+//
+//        System.out.println("Ex. 19 ===============");
+//        System.out.println("The most frequent word is :" + getMostFrequentWord(stringsArray));
+    }
+
+    private static String getMostFrequentWord(String[] string) {
+        int numberOfOccurences = 1;
+        int numberOfOccurencesTem = 0;
+        String word = "";
+        String wordTem = "";
+
+        for (int i = 0; i < string.length; i++) {
+            for (int j = 0; j < string.length; j++) {
+                if (i != j && string[i].equals(string[j])) {
+                    wordTem = string[i];
+                    numberOfOccurencesTem++;
+                }
+            }
+
+            if (numberOfOccurences < numberOfOccurencesTem) {
+                numberOfOccurences = numberOfOccurencesTem;
+                word = wordTem;
+            } else if (numberOfOccurences == numberOfOccurencesTem && !word.equals(wordTem)) {
+                if (word.compareTo(wordTem) < 0) {
+                    word = wordTem;
+                }
+            }
+
+            numberOfOccurencesTem = 1;
+        }
+
+        return word;
+    }
+
+    private static String removeCharFromString(String string, char charForRemove) {
+        String newString = "";
+
+        for (int i = 0; i < string.length(); i++) {
+            if (string.charAt(i) != charForRemove) {
+                newString += string.charAt(i);
+            }
+        }
+
+        return newString;
+    }
+
+    private static String getStringWithoutDuplicates(String string) {
+
+        String stringWithoutDuplicateChars = "";
+
+        boolean charUnique = true;
+        for (int i = 0; i < string.length(); i++) {
 
 
+            for (int j = 0; j < string.length(); j++) {
+
+                if (i != j && string.charAt(i) == string.charAt(j)) {
+                    charUnique = false;
+                    break;
+                }
+            }
+
+            if (charUnique) {
+                stringWithoutDuplicateChars += string.charAt(i);
+            }
+            charUnique = true;
+        }
+
+        return stringWithoutDuplicateChars;
+    }
+
+    private static String getLargestPalindromicSubstring(String longestPalindromicSubstring) {
+        String substringPalindrome = "";
+        String temp = "";
+
+        int plaindromMaxLength = 0;
+        int currentLength = 0;
+
+        for (int i = 0; i < longestPalindromicSubstring.length(); i++) {
+
+            temp = getPalindromSubstring(longestPalindromicSubstring, i, i);
+            currentLength = temp.length();
+
+            if (currentLength > plaindromMaxLength) {
+                plaindromMaxLength = currentLength;
+                substringPalindrome = temp;
+            }
+
+            temp = getPalindromSubstring(longestPalindromicSubstring, i, i + 1);
+            currentLength = temp.length();
+
+            if (currentLength > plaindromMaxLength) {
+                plaindromMaxLength = currentLength;
+                substringPalindrome = temp;
+            }
+        }
+
+        return substringPalindrome;
+    }
+
+    private static String getPalindromSubstring(String string, int startIndex, int endIndex) {
+        int stringSize = string.length();
+
+        while (startIndex >= 0 && endIndex < stringSize && (string.charAt(startIndex) == string.charAt(endIndex))) {
+            startIndex--;
+            endIndex++;
+        }
+
+        return string.substring(startIndex + 1, endIndex);
+    }
+
+    private static int getLargestSubstring(String longestSubstring) {
+        String substring = "";
+
+        for (int i = 0; i < longestSubstring.length(); i++) {
+            List<String> substringArray = new ArrayList<String>();
+            substringArray.add(longestSubstring.charAt(i) + "");
+
+            int substringLimit = i + 1;
+            for (; substringLimit < longestSubstring.length(); substringLimit++) {
+                if (substringArray.contains(longestSubstring.charAt(substringLimit) + "")) {
+                    break;
+                } else {
+                    substringArray.add(longestSubstring.charAt(substringLimit) + "");
+                }
+            }
+            substringArray.clear();
+
+            if (substring.length() < substringLimit - i) {
+                substring = longestSubstring.substring(i, substringLimit);
+            }
+
+        }
+        return substring.length();
     }
 
     private static Boolean isPalindrome(String stringPalindrome) {
