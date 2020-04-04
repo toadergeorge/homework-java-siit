@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HomeworkStringsTest {
@@ -44,7 +45,7 @@ public class HomeworkStringsTest {
     }
 
     @After
-    public void restoreSystemInputOutput(){
+    public void restoreSystemInputOutput() {
         System.setIn(systemIn);
         System.setOut(systemOut);
     }
@@ -409,6 +410,391 @@ public class HomeworkStringsTest {
         assertThat(vowelsAndConsonantsMessage).isEqualTo(getOutput());
     }
 
+    @Test
+    public void given_string_input_and_char_when_compute_get_string_occurences_of_char_then_occurences_are_returned() {
+        //Given
+        String input = "aaabbcf";
+        char character = 'a';
+
+        //When
+        int returnedInt = sut.getStringOccurences(input, character);
+
+        //Then
+        assertThat(returnedInt).isEqualTo(3);
+    }
+
+    @Test
+    public void given_empty_input_when_compute_get_string_occurences_of_char_then_occurences_are_returned() {
+        //Given
+        String input = "";
+        char character = 'a';
+
+        //When
+        int returnedInt = sut.getStringOccurences(input, character);
+
+        //Then
+        assertThat(returnedInt).isEqualTo(0);
+    }
+
+    @Test
+    public void given_empty_character_input_when_compute_get_string_occurences_of_char_then_occurences_are_returned() {
+        //Given
+        String input = "aaabbb";
+        char character = ' ';
+
+        //When
+        int returnedInt = sut.getStringOccurences(input, character);
+
+        //Then
+        assertThat(returnedInt).isEqualTo(0);
+    }
+
+    @Test
+    public void given_null_input_when_compute_get_string_occurences_of_char_then_occurences_are_returned() {
+        //Given
+        String input = null;
+        char character = ' ';
+
+        //When
+        int returnedInt = sut.getStringOccurences(input, character);
+
+        //Then
+        assertThat(returnedInt).isEqualTo(0);
+    }
+
+    @Test
+    public void given_input_with_spaces_when_compute_get_string_occurences_of_char_then_occurences_are_returned() {
+        //Given
+        String input = "a bc dee";
+        char character = ' ';
+
+        //When
+        int returnedInt = sut.getStringOccurences(input, character);
+
+        //Then
+        assertThat(returnedInt).isEqualTo(2);
+    }
+
+    @Test
+    public void given_string_input_when_compute_get_first_non_repeated_char_then_char_is_returned() {
+        //Given
+        String input = "aabbcdefg";
+
+        //When
+        String returnedString = sut.getFirstNonRepeatedChar(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo("c");
+    }
+
+    @Test
+    public void given_empty_input_when_compute_get_first_non_repeated_char_then_empty_is_returned() {
+        //Given
+        String input = "";
+
+        //When
+        String returnedString = sut.getFirstNonRepeatedChar(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo("");
+    }
+
+    @Test
+    public void given_null_input_when_compute_get_first_non_repeated_char_then_null_is_returned() {
+        //Given
+        String input = null;
+
+        //When
+        String returnedString = sut.getFirstNonRepeatedChar(input);
+
+        //Then
+        assertThat(returnedString).isNull();
+    }
+
+    @Test
+    public void given_string_input_with_spaces_when_compute_get_first_non_repeated_char_then_char_is_returned() {
+        //Given
+        String input = "aabb cde";
+
+        //When
+        String returnedString = sut.getFirstNonRepeatedChar(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(" ");
+    }
+
+    @Test
+    public void given_string_input_when_compute_get_int_from_string_then_int_is_returned() {
+        //Given
+        String input = "12345";
+
+        //When
+        int returnedString = sut.getIntFromString(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(12345);
+    }
+
+    @Test
+    public void given_empty_input_when_compute_get_int_from_string_then_zero_is_returned() {
+        //Given
+        String input = "";
+
+        //When
+        int returnedString = sut.getIntFromString(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(0);
+    }
+
+    @Test
+    public void given_null_input_when_compute_get_int_from_string_then_zero_is_returned() {
+        //Given
+        String input = null;
+
+        //When
+        int returnedString = sut.getIntFromString(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(0);
+    }
+
+    @Test
+    public void given_input_with_spaces_when_compute_get_int_from_string_then_minus_one_is_returned() {
+        //Given
+        String input = "123 55";
+
+        //When
+        int returnedString = sut.getIntFromString(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(-1);
+    }
+
+    @Test
+    public void given_input_with_letters_when_compute_get_int_from_string_then_minus_one_is_returned() {
+        //Given
+        String input = "123A55";
+
+        //When
+        int returnedString = sut.getIntFromString(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(-1);
+    }
+
+    @Test
+    public void given_string_input_when_compute_get_backward_sentence_then_backward_sentece_is_returned() {
+        //Given
+        String input = "Covidul umbla liber pe strazi in lumina stralucitoare a soarelui";
+
+        //When
+        String returnedString = sut.getBackwardSentence(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo("soarelui a stralucitoare lumina in strazi pe liber umbla Covidul");
+    }
+
+    @Test
+    public void given_string_empty_when_compute_get_backward_sentence_then_empty_returned() {
+        //Given
+        String input = "";
+
+        //When
+        String returnedString = sut.getBackwardSentence(input);
+
+        //Then
+        assertThat(returnedString).isEmpty();
+    }
+
+    @Test
+    public void given_string_null_when_compute_get_backward_sentence_then_null_is_returned() {
+        //Given
+        String input = null;
+
+        //When
+        String returnedString = sut.getBackwardSentence(input);
+
+        //Then
+        assertThat(returnedString).isNull();
+    }
+
+    @Test
+    public void given_string_input_when_compute_validate_rotated_string_then_boolean_is_returned() {
+        //Given
+        String input1 = "ABD1";
+        String input2 = "D1AB";
+
+        //When
+        Boolean returnedString = sut.validateRotatedString(input1, input2);
+
+        //Then
+        assertThat(returnedString).isEqualTo(true);
+    }
+
+    @Test
+    public void given_string_first_input_empty_when_compute_validate_rotated_string_then_boolean_is_returned() {
+        //Given
+        String input1 = "";
+        String input2 = "D1AB";
+
+        //When
+        Boolean returnedString = sut.validateRotatedString(input1, input2);
+
+        //Then
+        assertThat(returnedString).isEqualTo(false);
+    }
+
+    @Test
+    public void given_string_second_input_empty_when_compute_validate_rotated_string_then_boolean_is_returned() {
+        //Given
+        String input1 = "ABD1";
+        String input2 = "";
+
+        //When
+        Boolean returnedString = sut.validateRotatedString(input1, input2);
+
+        //Then
+        assertThat(returnedString).isEqualTo(false);
+    }
+
+    @Test
+    public void given_string_first_input_null_when_compute_validate_rotated_string_then_boolean_is_returned() {
+        //Given
+        String input1 = null;
+        String input2 = "D1AB";
+
+        //When
+        Boolean returnedString = sut.validateRotatedString(input1, input2);
+
+        //Then
+        assertThat(returnedString).isEqualTo(false);
+    }
+
+    @Test
+    public void given_string_second_input_null_when_compute_validate_rotated_string_then_boolean_is_returned() {
+        //Given
+        String input1 = "ABD1";
+        String input2 = null;
+
+        //When
+        Boolean returnedString = sut.validateRotatedString(input1, input2);
+
+        //Then
+        assertThat(returnedString).isEqualTo(false);
+    }
+
+    @Test
+    public void given_string_first_input_with_spaces_when_compute_validate_rotated_string_then_boolean_is_returned() {
+        //Given
+        String input1 = "AB  D1";
+        String input2 = " D1AB ";
+
+        //When
+        Boolean returnedString = sut.validateRotatedString(input1, input2);
+
+        //Then
+        assertThat(returnedString).isEqualTo(true);
+    }
+
+    @Test
+    public void given_string_input_when_compute_is_palindrome_then_boolean_is_returned() {
+        //Given
+        String input = "capac";
+
+        //When
+        Boolean returnedString = sut.isPalindrome(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(true);
+    }
+
+    @Test
+    public void given_string_empty_when_compute_is_palindrome_then_boolean_is_returned() {
+        //Given
+        String input = "";
+
+        //When
+        Boolean returnedString = sut.isPalindrome(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(false);
+    }
+
+    @Test
+    public void given_string_null_when_compute_is_palindrome_then_boolean_is_returned() {
+        //Given
+        String input = null;
+
+        //When
+        Boolean returnedString = sut.isPalindrome(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(false);
+    }
+
+    @Test
+    public void given_string_with_spaces_when_compute_is_palindrome_then_boolean_is_returned() {
+        //Given
+        String input = "cap ac";
+
+        //When
+        Boolean returnedString = sut.isPalindrome(input);
+
+        //Then
+        assertThat(returnedString).isEqualTo(false);
+    }
+
+
+    @Test
+    public void given_string_input_when_compute_get_largest_substring_with_unique_chars_then_int_is_returned() {
+        //Given
+        String input = "abcdefgacd";
+
+        //When
+        int returnedStringLength = sut.getLargestSubstring(input);
+
+        //Then
+        assertThat(returnedStringLength).isEqualTo(7);
+    }
+
+
+    @Test
+    public void given_string_empty_when_compute_get_largest_substring_with_unique_chars_then_int_is_returned() {
+        //Given
+        String input = "";
+
+        //When
+        int returnedStringLength = sut.getLargestSubstring(input);
+
+        //Then
+        assertThat(returnedStringLength).isEqualTo(0);
+    }
+
+    @Test
+    public void given_string_null_when_compute_get_largest_substring_with_unique_chars_then_int_is_returned() {
+        //Given
+        String input = null;
+
+        //When
+        int returnedStringLength = sut.getLargestSubstring(input);
+
+        //Then
+        assertThat(returnedStringLength).isEqualTo(0);
+    }
+
+    @Test
+    public void given_string_with_spaces_when_compute_get_largest_substring_with_unique_chars_then_int_is_returned() {
+        //Given
+        String input = "abcdefg hi jlkkm";
+
+        //When
+        int returnedStringLength = sut.getLargestSubstring(input);
+
+        //Then
+        assertThat(returnedStringLength).isEqualTo(10);
+    }
+
 
 
     @Test
@@ -461,6 +847,12 @@ public class HomeworkStringsTest {
 
 
 
+//getLargestPalindromicSubstring
 
+//getStringWithoutDuplicates
+
+//removeCharFromString
+
+//getMostFrequentWord
 
 }

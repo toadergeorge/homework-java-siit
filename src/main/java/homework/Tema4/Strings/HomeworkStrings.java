@@ -55,9 +55,9 @@ public class HomeworkStrings {
         //9. Write a method to print the first non-repeated character from a string
         String stringWithDoubles = "liaassxxbbccklik@";
         System.out.println("Ex. 9 ===============");
-        String resultFirstChar = getFirstNonRepeteadChar(stringWithDoubles);
+        String resultFirstChar = getFirstNonRepeatedChar(stringWithDoubles);
         if (resultFirstChar.equals("")) {
-            System.out.println("First no-repetead character was not found!" + resultFirstChar);
+            System.out.println("First no-repetead character was not found!");
         } else {
             System.out.println("First no-repetead character is :" + resultFirstChar);
         }
@@ -69,7 +69,7 @@ public class HomeworkStrings {
         System.out.println("Int from string : " + getIntFromString(stringForInt));
 
         //11. Write a method to reverse words in a given sentence without using any library method.
-        String sentence = " Covidul umbla liber pe strazi in lumina stralucitoare a soarelui";
+        String sentence = "Covidul umbla liber pe strazi in lumina stralucitoare a soarelui";
         System.out.println("Ex. 11 ===============");
         System.out.println("Backward sentence" + getBackwardSentence(sentence));
         //12. Write a method to check if two strings are a rotation of each other.
@@ -81,31 +81,31 @@ public class HomeworkStrings {
         String stringPalindrome = "capac";
         System.out.println("Ex. 13 ===============");
         System.out.println("String is palindrome :" + isPalindrome(stringPalindrome));
-        //14. Write a method to find the length of the longest substring without repeating characters.
 
+        //14. Write a method to find the length of the longest substring without repeating characters.
         String longestSubstring = "abcdefgacd";
-        System.out.println("Ex. 15 ===============");
+        System.out.println("Ex. 14 ===============");
         System.out.println("Largest substring :" + getLargestSubstring(longestSubstring));
 
-        //16. Given string str, write a method to find the longest palindromic substring in str.
+        //15. Given string str, write a method to find the longest palindromic substring in str.
         String longestPalindromicSubstring = "abracadabra";
-        System.out.println("Ex. 16 ===============");
+        System.out.println("Ex. 15 ===============");
         System.out.println("Largest substring palindrom:" + getLargestPalindromicSubstring(longestPalindromicSubstring));
-        //17. Write a method to remove the duplicate character from String.
+        //16. Write a method to remove the duplicate character from String.
         String stringWithDuplicatesThree = "aabboccssk";
-        System.out.println("Ex. 17 ===============");
+        System.out.println("Ex. 16 ===============");
         System.out.println("String without duplicates :" + getStringWithoutDuplicates(stringWithDuplicatesThree));
-        //18. Write a method to remove a given character from String.
+        //17. Write a method to remove a given character from String.
         char charToRemove = 'a';
         String stringForRemoval = "aabboccssk";
-        System.out.println("Ex. 18 ===============");
+        System.out.println("Ex. 17 ===============");
         System.out.println("String after remove :" + removeCharFromString(stringForRemoval, charToRemove));
 
-        //19. Given an array of strings, find the most frequent word in a given array, I mean, the string that appears the most in the array.
+        //18. Given an array of strings, find the most frequent word in a given array, I mean, the string that appears the most in the array.
         //In the case of a tie, ​the string that is the smallest (lexicographically) ​is printed.
         String[] stringsArray = {"gad", "gad", "corona", "virus", "god", "god"};
 
-        System.out.println("Ex. 19 ===============");
+        System.out.println("Ex. 18 ===============");
         System.out.println("The most frequent word is :" + getMostFrequentWord(stringsArray));
     }
 
@@ -175,7 +175,7 @@ public class HomeworkStrings {
         return stringWithoutDuplicateChars;
     }
 
-    private static String getLargestPalindromicSubstring(String longestPalindromicSubstring) {
+    public static String getLargestPalindromicSubstring(String longestPalindromicSubstring) {
         String substringPalindrome = "";
         String temp = "";
 
@@ -215,7 +215,12 @@ public class HomeworkStrings {
         return string.substring(startIndex + 1, endIndex);
     }
 
-    private static int getLargestSubstring(String longestSubstring) {
+    public static int getLargestSubstring(String longestSubstring) {
+
+        if (longestSubstring == null) {
+            return 0;
+        }
+
         String substring = "";
 
         for (int i = 0; i < longestSubstring.length(); i++) {
@@ -240,7 +245,11 @@ public class HomeworkStrings {
         return substring.length();
     }
 
-    private static Boolean isPalindrome(String stringPalindrome) {
+    public static Boolean isPalindrome(String stringPalindrome) {
+        if (stringPalindrome == null || stringPalindrome.equals("")) {
+            return false;
+        }
+
         for (int i = 0; i < stringPalindrome.length(); i++) {
             if (stringPalindrome.charAt(i) != stringPalindrome.charAt(stringPalindrome.length() - 1 - i) || stringPalindrome.charAt(i) == ' ') {
                 return false;
@@ -249,7 +258,11 @@ public class HomeworkStrings {
         return true;
     }
 
-    private static Boolean validateRotatedString(String stringToRotate, String rotatedString) {
+    public static Boolean validateRotatedString(String stringToRotate, String rotatedString) {
+        if (stringToRotate == null || rotatedString == null) {
+            return false;
+        }
+
         if (stringToRotate.length() != rotatedString.length()) {
             return false;
         }
@@ -279,7 +292,11 @@ public class HomeworkStrings {
         return true;
     }
 
-    private static String getBackwardSentence(String sentence) {
+    public static String getBackwardSentence(String sentence) {
+        if (sentence == null) {
+            return null;
+        }
+
         String word = "";
 
         List<String> sentenceList = new ArrayList<String>();
@@ -295,7 +312,6 @@ public class HomeworkStrings {
         }
 
         if (!word.equals("")) {
-            word = " " + word;
             sentenceList.add(word);
         }
 
@@ -307,7 +323,13 @@ public class HomeworkStrings {
         return backwardString;
     }
 
-    private static int getIntFromString(String string) {
+    public static int getIntFromString(String string) {
+
+        if (string == null) {
+            return 0;
+        }
+
+
         int intFromString = 0;
         int signNegative = 1;
 
@@ -345,7 +367,12 @@ public class HomeworkStrings {
         return intFromString;
     }
 
-    private static String getFirstNonRepeteadChar(String string) {
+    public static String getFirstNonRepeatedChar(String string) {
+
+        if (string == null) {
+            return null;
+        }
+
         String charater = "";
 
         char[] arrayOfChars = string.toCharArray();
@@ -373,8 +400,13 @@ public class HomeworkStrings {
         return charater;
     }
 
-    private static int getStringOccurences(String string, char character) {
+    public static int getStringOccurences(String string, char character) {
         int occurences = 0;
+
+        if (string == null) {
+            return 0;
+        }
+
 
         char[] stringToArray = string.toCharArray();
 
