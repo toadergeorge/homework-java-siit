@@ -9,107 +9,104 @@ import java.util.List;
 
 public class HomeworkStrings {
     public static void main(String[] args) {
-//        //1. Write a method to reverse a given string in place.
-//        String stringForReverse = "abcdefg";
-//        System.out.println("Ex. 1 ===============");
-//        System.out.println("stringForReverse = " + reverseString(stringForReverse));
-//
-//        //2. Write a method to print duplicate characters from a string.
-//        String stringWithDuplicates = "aaabbbcccdddsssght";
-//        System.out.println("Ex. 2 ===============");
-//        System.out.println("stringDuplicates = " + getStringDuplicates(stringWithDuplicates));
-//
-//        //3. Write a method to check if two strings are anagrams of each other.
-//        String stringAnagramFirst = "SILENT2";
-//        String stringAnagramSecond = "LISTEN2";
-//        System.out.println("Ex. 3 ===============");
-//        System.out.println("stringsAreAnagram = " + isStringAnagram(stringAnagramFirst, stringAnagramSecond));
-//
-//
-//        //4. Write a method to find all the permutations of a string
-//        String stringWithPermutations = "ABC";
-//        System.out.println("Ex. 4 ===============");
-//        System.out.println("stringWithDigits = " + getStringPermutations(stringWithPermutations));
-//
-//        //5. Write a method to check if a string contains only digits.
-//        String stringWithDigits = "1234567";
-//        System.out.println("Ex. 5 ===============");
-//        System.out.println("stringWithDigits = " + stringWithDigits(stringWithDigits));
-//
-//        //6. Write a method to find duplicate characters in a given string.
-//        String stringWithDuplicatesTwo = "AAABBCCDDXXKLRKA";
-//        System.out.println("Ex. 6 ===============");
-//        System.out.println("stringWithDuplicates= " + findStringDuplicates(stringWithDuplicatesTwo));
-//
-//        //7. Write a method to count a number of vowels and consonants in a given string.
-//        String vowelsString = "AMAIZING1111";
-//        System.out.println("Ex. 7 ===============");
-//        getVowelsAndConsonantsNumber(vowelsString);
-//
-//        //8.Write a method to count the occurrence of a given character in a string.
-//        String doubleCharString = "anaxsolfssd";
-//        char character = 's';
-//        System.out.println("Ex. 8 ===============");
-//        System.out.println("char " + character + " appears " + getStringOccurences(doubleCharString, character) + " times");
-//
-//        //9. Write a method to print the first non-repeated character from a string
-//        String stringWithDoubles = "liaassxxbbccklik@";
-//        System.out.println("Ex. 9 ===============");
-//        String resultFirstChar = getFirstNonRepeteadChar(stringWithDoubles);
-//        if (resultFirstChar.equals("")) {
-//            System.out.println("First no-repetead character was not found!" + resultFirstChar);
-//        } else {
-//            System.out.println("First no-repetead character is :" + resultFirstChar);
-//        }
-//
-//        //10. Write a method to convert a given String into int like the atoi().
-//        String stringForInt = "639788";
-//        System.out.println("Ex. 10 ===============");
-//        int intFromString = getIntFromString(stringForInt);
-//        System.out.println("Int from string : " + getIntFromString(stringForInt));
-//
-//        //11. Write a method to reverse words in a given sentence without using any library method.
-//        String sentence = " Covidul umbla liber pe strazi in lumina stralucitoare a soarelui";
-//        System.out.println("Ex. 11 ===============");
-//        System.out.println("Backward sentence" + getBackwardSentence(sentence));
-//        //12. Write a method to check if two strings are a rotation of each other.
-//        String stringToRotate = "ABD1";
-//        String rotatedString = "D1AB";
-//        System.out.println("Ex. 12 ===============");
-//        System.out.println("String are rotated :" + validateRotatedString(stringToRotate, rotatedString));
-//        //13. Write a method to check if a given string is a palindrome.
-//        String stringPalindrome = "capac";
-//        System.out.println("Ex. 13 ===============");
-//        System.out.println("String is palindrome :" + isPalindrome(stringPalindrome));
-//        //14. Write a method to find the length of the longest substring without repeating characters.
-//        String stringPalindrome = "capac";
-//        System.out.println("Ex. 13 ===============");
-//        System.out.println("String is palindrome :" + isPalindrome(stringPalindrome));
-//        //15. Write a method to find the length of the longest substring without repeating characters.
-//        String longestSubstring = "abcdefgacd";
-//        System.out.println("Ex. 15 ===============");
-//        System.out.println("Largest substring :" + getLargestSubstring(longestSubstring));
+        //1. Write a method to reverse a given string in place.
+        String stringForReverse = "abcdefg";
+        System.out.println("Ex. 1 ===============");
+        System.out.println("stringForReverse = " + reverseString(stringForReverse));
 
-//        //16. Given string str, write a method to find the longest palindromic substring in str.
-//        String longestPalindromicSubstring = "abracadabra";
-//        System.out.println("Ex. 16 ===============");
-//        System.out.println("Largest substring palindrom:" + getLargestPalindromicSubstring(longestPalindromicSubstring));
-//        //17. Write a method to remove the duplicate character from String.
-//        String stringWithDuplicates = "aabboccssk";
-//        System.out.println("Ex. 17 ===============");
-//        System.out.println("String without duplicates :" + getStringWithoutDuplicates(stringWithDuplicates));
-//        //18. Write a method to remove a given character from String.
-//        char charToRemove = 'a';
-//        String stringForRemoval = "aabboccssk";
-//        System.out.println("Ex. 18 ===============");
-//        System.out.println("String after remove :" + removeCharFromString(stringForRemoval, charToRemove));
+        //2. Write a method to print duplicate characters from a string.
+        String stringWithDuplicates = "aaabbbcccdddsssght";
+        System.out.println("Ex. 2 ===============");
+        System.out.println("stringDuplicates = " + getStringDuplicates(stringWithDuplicates));
 
-//        //19. Given an array of strings, find the most frequent word in a given array, I mean, the string that appears the most in the array.
-//        In the case of a tie, ​the string that is the smallest (lexicographically) ​is printed.
-//        String[] stringsArray = {"gad", "gad", "corona", "virus", "god", "god"};
-//
-//        System.out.println("Ex. 19 ===============");
-//        System.out.println("The most frequent word is :" + getMostFrequentWord(stringsArray));
+        //3. Write a method to check if two strings are anagrams of each other.
+        String stringAnagramFirst = "SILENT2";
+        String stringAnagramSecond = "LISTEN2";
+        System.out.println("Ex. 3 ===============");
+        System.out.println("stringsAreAnagram = " + isStringAnagram(stringAnagramFirst, stringAnagramSecond));
+
+
+        //4. Write a method to find all the permutations of a string
+        String stringWithPermutations = "ABC";
+        System.out.println("Ex. 4 ===============");
+        System.out.println("stringWithDigits = " + getStringPermutations(stringWithPermutations));
+
+        //5. Write a method to check if a string contains only digits.
+        String stringWithDigits = "1234567";
+        System.out.println("Ex. 5 ===============");
+        System.out.println("stringWithDigits = " + stringWithDigits(stringWithDigits));
+
+        //6. Write a method to find duplicate characters in a given string.
+        String stringWithDuplicatesTwo = "AAABBCCDDXXKLRKA";
+        System.out.println("Ex. 6 ===============");
+        System.out.println("stringWithDuplicates= " + findStringDuplicates(stringWithDuplicatesTwo));
+
+        //7. Write a method to count a number of vowels and consonants in a given string.
+        String vowelsString = "AMAIZING1111";
+        System.out.println("Ex. 7 ===============");
+        getVowelsAndConsonantsNumber(vowelsString);
+
+        //8.Write a method to count the occurrence of a given character in a string.
+        String doubleCharString = "anaxsolfssd";
+        char character = 's';
+        System.out.println("Ex. 8 ===============");
+        System.out.println("char " + character + " appears " + getStringOccurences(doubleCharString, character) + " times");
+
+        //9. Write a method to print the first non-repeated character from a string
+        String stringWithDoubles = "liaassxxbbccklik@";
+        System.out.println("Ex. 9 ===============");
+        String resultFirstChar = getFirstNonRepeteadChar(stringWithDoubles);
+        if (resultFirstChar.equals("")) {
+            System.out.println("First no-repetead character was not found!" + resultFirstChar);
+        } else {
+            System.out.println("First no-repetead character is :" + resultFirstChar);
+        }
+
+        //10. Write a method to convert a given String into int like the atoi().
+        String stringForInt = "639788";
+        System.out.println("Ex. 10 ===============");
+        int intFromString = getIntFromString(stringForInt);
+        System.out.println("Int from string : " + getIntFromString(stringForInt));
+
+        //11. Write a method to reverse words in a given sentence without using any library method.
+        String sentence = " Covidul umbla liber pe strazi in lumina stralucitoare a soarelui";
+        System.out.println("Ex. 11 ===============");
+        System.out.println("Backward sentence" + getBackwardSentence(sentence));
+        //12. Write a method to check if two strings are a rotation of each other.
+        String stringToRotate = "ABD1";
+        String rotatedString = "D1AB";
+        System.out.println("Ex. 12 ===============");
+        System.out.println("String are rotated :" + validateRotatedString(stringToRotate, rotatedString));
+        //13. Write a method to check if a given string is a palindrome.
+        String stringPalindrome = "capac";
+        System.out.println("Ex. 13 ===============");
+        System.out.println("String is palindrome :" + isPalindrome(stringPalindrome));
+        //14. Write a method to find the length of the longest substring without repeating characters.
+
+        String longestSubstring = "abcdefgacd";
+        System.out.println("Ex. 15 ===============");
+        System.out.println("Largest substring :" + getLargestSubstring(longestSubstring));
+
+        //16. Given string str, write a method to find the longest palindromic substring in str.
+        String longestPalindromicSubstring = "abracadabra";
+        System.out.println("Ex. 16 ===============");
+        System.out.println("Largest substring palindrom:" + getLargestPalindromicSubstring(longestPalindromicSubstring));
+        //17. Write a method to remove the duplicate character from String.
+        String stringWithDuplicatesThree = "aabboccssk";
+        System.out.println("Ex. 17 ===============");
+        System.out.println("String without duplicates :" + getStringWithoutDuplicates(stringWithDuplicatesThree));
+        //18. Write a method to remove a given character from String.
+        char charToRemove = 'a';
+        String stringForRemoval = "aabboccssk";
+        System.out.println("Ex. 18 ===============");
+        System.out.println("String after remove :" + removeCharFromString(stringForRemoval, charToRemove));
+
+        //19. Given an array of strings, find the most frequent word in a given array, I mean, the string that appears the most in the array.
+        //In the case of a tie, ​the string that is the smallest (lexicographically) ​is printed.
+        String[] stringsArray = {"gad", "gad", "corona", "virus", "god", "god"};
+
+        System.out.println("Ex. 19 ===============");
+        System.out.println("The most frequent word is :" + getMostFrequentWord(stringsArray));
     }
 
     private static String getMostFrequentWord(String[] string) {
@@ -390,12 +387,18 @@ public class HomeworkStrings {
         return occurences;
     }
 
-    private static void getVowelsAndConsonantsNumber(String vowelsString) {
+    public static void getVowelsAndConsonantsNumber(String vowelsString) {
+        int vowels = 0;
+        int consonants = 0;
+
+        if (vowelsString == null) {
+            System.out.println("Consonants numbers is:" + consonants);
+            System.out.println("Vowel numbers is:" + vowels);
+            return;
+        }
 
         String vowelsStringLower = vowelsString.toLowerCase();
         char[] ch = vowelsStringLower.toCharArray();
-        int vowels = 0;
-        int consonants = 0;
 
         for (int i = 0; i < vowelsString.length(); i++) {
             if (ch[i] == 'a' || ch[i] == 'o' || ch[i] == 'u' || ch[i] == 'e' || ch[i] == 'i') {
@@ -408,7 +411,12 @@ public class HomeworkStrings {
         System.out.println("Vowel numbers is:" + vowels);
     }
 
-    private static String findStringDuplicates(String string) {
+    public static String findStringDuplicates(String string) {
+
+        if (string == null) {
+            return null;
+        }
+
         String resultString = "";
         String uniqueString = "";
 
@@ -432,12 +440,20 @@ public class HomeworkStrings {
         return resultString;
     }
 
-    private static String getStringPermutations(String string) {
+    public static String getStringPermutations(String string) {
         //recursivitare -- not done
         return "not implemented yet!";
     }
 
-    private static Boolean isStringAnagram(String stringAnagramFirst, String stringAnagramSecond) {
+    public static Boolean isStringAnagram(String stringAnagramFirst, String stringAnagramSecond) {
+        if (
+                stringAnagramFirst == null ||
+                        stringAnagramSecond == null ||
+                        stringAnagramSecond.equals("") ||
+                        stringAnagramFirst.equals("")) {
+            return false;
+        }
+
         if (stringAnagramFirst.length() != stringAnagramSecond.length()) {
             return false;
         }
@@ -458,9 +474,14 @@ public class HomeworkStrings {
     }
 
 
-    private static Boolean stringWithDigits(String string) {
+    public static Boolean stringWithDigits(String string) {
 
         char[] ch = string.toCharArray();
+
+        if (string.equals("") || string == null) {
+            return false;
+        }
+
         for (int i = 0; i < string.length(); i++) {
 
             if (ch[i] < '0' || ch[i] > '9') {
@@ -471,7 +492,12 @@ public class HomeworkStrings {
         return true;
     }
 
-    private static String reverseString(String string) {
+    public static String reverseString(String string) {
+
+        if (string == null) {
+            return null;
+        }
+
         String resultString = "";
         for (int i = (string.length() - 1); i >= 0; i--) {
             resultString += string.charAt(i);
@@ -479,7 +505,11 @@ public class HomeworkStrings {
         return resultString;
     }
 
-    private static String getStringDuplicates(String string) {
+    public static String getStringDuplicates(String string) {
+        if (string == null) {
+            return null;
+        }
+
         String resultString = "";
         String uniqueString = "";
 
