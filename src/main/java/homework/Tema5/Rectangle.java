@@ -36,7 +36,10 @@ public class Rectangle implements GeometricShapeInterface {
             return false;
         }
         Rectangle rectangle = (Rectangle) o;
-        return length == rectangle.getLength() && width == rectangle.getWidth();
+        return (
+                (length == rectangle.getLength() && width == rectangle.getWidth()) ||
+                        (length == rectangle.getWidth() && width == rectangle.getLength())
+        );
     }
 
     @Override

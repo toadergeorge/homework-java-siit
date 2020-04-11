@@ -193,4 +193,74 @@ public class ShapeComputeServiceTest {
         BigDecimal expectedResult = new BigDecimal("8.00");
         assertThat(returnedAreaSum.setScale(2, BigDecimal.ROUND_HALF_UP)).isEqualTo(expectedResult);
     }
+
+    @Test
+    public void given_two_identic_shapes_square_input_when_compute_perimeter_sum_then_false_boolean_false_is_returned() {
+        //Given
+        Double input = 2D;
+
+        //When
+        Square square = new Square(input);
+        ShapeComputeService.addShapeToOperation(square);
+
+        Square square2 = new Square(input);
+        boolean result = ShapeComputeService.addShapeToOperation(square2);
+
+        //Then
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    public void given_two_different_shapes_square_input_when_compute_perimeter_sum_then_false_boolean_true_is_returned() {
+        //Given
+        Double input = 2D;
+        Double input2 = 3D;
+
+        //When
+        Square square = new Square(input);
+        ShapeComputeService.addShapeToOperation(square);
+
+        Square square2 = new Square(input2);
+        boolean result = ShapeComputeService.addShapeToOperation(square2);
+
+        //Then
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    public void given_two_identic_shapes_rectangle_input_when_compute_perimeter_sum_then_false_boolean_false_is_returned() {
+        //Given
+        Double inputLength = 2D;
+        Double inputWidth = 3D;
+
+        //When
+        Rectangle rectangle1 = new Rectangle(inputLength, inputWidth);
+        ShapeComputeService.addShapeToOperation(rectangle1);
+
+        Rectangle rectangle2 = new Rectangle(inputLength, inputWidth);
+        boolean result = ShapeComputeService.addShapeToOperation(rectangle2);
+
+        //Then
+        assertThat(result).isEqualTo(false);
+    }
+
+    @Test
+    public void given_two_different_shapes_rectangle_input_when_compute_perimeter_sum_then_false_boolean_true_is_returned() {
+        //Given
+        Double inputLength = 2D;
+        Double inputWidth = 3D;
+
+        Double inputLength2 = 4D;
+        Double inputWidth2 = 5D;
+
+        //When
+        Rectangle rectangle1 = new Rectangle(inputLength, inputWidth);
+        ShapeComputeService.addShapeToOperation(rectangle1);
+
+        Rectangle rectangle2 = new Rectangle(inputLength2, inputWidth2);
+        boolean result = ShapeComputeService.addShapeToOperation(rectangle2);
+
+        //Then
+        assertThat(result).isEqualTo(true);
+    }
 }
