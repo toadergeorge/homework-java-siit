@@ -1,6 +1,7 @@
 package homework.Tema6.Ex1;
 
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 public class TreeSetExercise {
@@ -27,15 +28,21 @@ public class TreeSetExercise {
         treeSetSortedByName.add(ioana);
         treeSetSortedByName.add(matei);
 
-        for (Person person : treeSetSortedByName) {
-            System.out.println(person.getName());
+        Iterator<Person> iterator = treeSetSortedByName.iterator();
+
+        while (iterator.hasNext()) {
+            Person currentElement = iterator.next();
+            System.out.println(currentElement.getName());
         }
 
         TreeSet<Person> treeSetSortedByAge = new TreeSet<Person>(new ComparatorByAge());
         treeSetSortedByAge.addAll(treeSetSortedByName);
 
-        for (Person person : treeSetSortedByAge) {
-            System.out.println(person.getAge());
+        Iterator<Person> iterator2 = treeSetSortedByAge.iterator();
+
+        while (iterator2.hasNext()) {
+            Person currentElement = iterator2.next();
+            System.out.println(currentElement.getAge());
         }
     }
 }

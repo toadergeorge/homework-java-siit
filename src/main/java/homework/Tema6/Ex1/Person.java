@@ -3,7 +3,6 @@ package homework.Tema6.Ex1;
 import lombok.*;
 
 @Getter
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
 public class Person {
     private String name;
