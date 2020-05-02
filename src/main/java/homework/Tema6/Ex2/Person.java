@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.Objects;
+
 @Getter
 @ToString
 public class Person {
@@ -25,5 +27,9 @@ public class Person {
         }
         Person person = (Person) o;
         return (name.equals(person.getName()) && age == person.getAge());
+    }
+
+    public int hashCode() {
+        return Objects.hash(name, age);
     }
 }
