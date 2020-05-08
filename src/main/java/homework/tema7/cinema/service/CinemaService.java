@@ -26,7 +26,6 @@ public class CinemaService {
                         try {
                             cinemaService.addSeatReservation(cinema, "A1");
                             cinemaService.addSeatReservation(cinema, "A2");
-                            cinemaService.addSeatReservation(cinema, "A3");
 
                             cinemaService.cancelReservation(cinema, "A1");
                             cinemaService.cancelReservation(cinema, "A2");
