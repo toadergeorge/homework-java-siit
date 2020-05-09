@@ -18,7 +18,11 @@ public class VotingService {
 
         boolean voting = true;
         while (voting) {
-            voting = voteCandidate(candidatesList, votingPool, scanner, voting);
+            try {
+                voting = voteCandidate(candidatesList, votingPool, scanner, voting);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
 
         votingPool.getVotesScore().forEach((candidateCnp, totalVotes) -> {
@@ -30,26 +34,32 @@ public class VotingService {
         });
     }
 
-    private static boolean voteCandidate(List<Person> candidatesList, VotingPool votingPool, Scanner scanner, boolean voting) {
-        System.out.println("Votati candidatul : (introduceti CNP spatiu NUME CANDIDAT)");
+    public static boolean voteCandidate(List<Person> candidatesList, VotingPool votingPool, Scanner scanner, boolean voting) throws Exception {
+        System.out.println("Votati candidatul : (introduceti CNP urmat de '+' si  NUME CANDIDAT)");
         System.out.println("Pentru a opri votul si afisare rezultate tastati tasta 0 urmata de enter!");
         String vote = scanner.nextLine();
+
+        if (vote.equals("0")) {
+            return false;
+        }
 
         String[] voteInfo = vote.split("\\+");
 
         if (voteInfo.length == 2) {
-            addVote(candidatesList, votingPool, voteInfo);
+            try {
+                addVote(candidatesList, votingPool, voteInfo);
+            } catch (Exception e) {
+                throw new Exception(e.getMessage());
+            }
+
         } else {
-            System.out.println("Combinatia CPN + NUME nu este corecta!");
+            throw new Exception("Combinatia CPN + NUME nu este corecta!");
         }
 
-        if (vote.equals("0")) {
-            voting = false;
-        }
         return voting;
     }
 
-    private static void addVote(List<Person> candidatesList, VotingPool votingPool, String[] voteInfo) {
+    public static void addVote(List<Person> candidatesList, VotingPool votingPool, String[] voteInfo) throws Exception {
         if (!votingPool.getVotingHistory().containsKey(voteInfo[0])) {
 
             String candidateCnp = "";
@@ -66,12 +76,12 @@ public class VotingService {
             }
 
             if (candidateCnp.equals("")) {
-                System.out.println("Candidatul ales nu exista! Va rugam incercati din nou!");
+                throw new Exception("Candidatul ales nu exista! Va rugam incercati din nou!");
             } else {
                 votingPool.getVotesScore().put(candidateCnp, votingPool.getVotesScore().get(candidateCnp) + 1);
             }
         } else {
-            System.out.println("Acest user a votata deja!");
+            throw new Exception("Acest user a votata deja!");
         }
     }
 }
