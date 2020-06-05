@@ -16,7 +16,11 @@ public class FestivalAttendeeThread extends Thread {
 
     @SneakyThrows
     public void run() {
-        this.festivalGate.ticketQueue.offer(this.ticketType);
+
+        synchronized (this) {
+            this.festivalGate.addTicket(this.ticketType);
+        }
+
         Thread.sleep(5);
     }
 }

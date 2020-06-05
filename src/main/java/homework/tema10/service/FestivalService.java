@@ -4,6 +4,7 @@ import homework.tema10.entity.FestivalGate;
 import homework.tema10.entity.TicketType;
 import homework.tema10.thread.FestivalAttendeeThread;
 import homework.tema10.thread.FestivalStatisticsThread;
+import lombok.SneakyThrows;
 
 import java.util.TimerTask;
 import java.util.concurrent.*;
@@ -16,9 +17,13 @@ public class FestivalService {
         FestivalGate festivalGate = new FestivalGate();
 
         TimerTask statsTask = new TimerTask() {
+            @SneakyThrows
             @Override
             public void run() {
                 FestivalStatisticsThread statsThread = new FestivalStatisticsThread(festivalGate);
+                statsThread.start();
+                statsThread.join();
+                statsThread = new FestivalStatisticsThread(festivalGate);
                 statsThread.start();
             };
         };
@@ -32,16 +37,7 @@ public class FestivalService {
         };
 
         ScheduledFuture scheduledFuture = scheduledExecutorService.scheduleAtFixedRate(statsTask,5,5, TimeUnit.SECONDS);
-        ScheduledFuture newAttendeeEnter= scheduledExecutorService.scheduleAtFixedRate(attendeeTask,1,1, TimeUnit.SECONDS);
-
-        try {
-            System.out.println("result = " + scheduledFuture.get());
-            System.out.println("result = " + newAttendeeEnter.get());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+        ScheduledFuture newAttendeeEnter= scheduledExecutorService.scheduleAtFixedRate(attendeeTask,3,3, TimeUnit.SECONDS);
 
         //scheduledExecutorService.shutdown();
 
