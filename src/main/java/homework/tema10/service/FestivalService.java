@@ -5,7 +5,6 @@ import homework.tema10.entity.TicketType;
 import homework.tema10.thread.FestivalAttendeeThread;
 import homework.tema10.thread.FestivalStatisticsThread;
 
-import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.*;
 
@@ -21,7 +20,6 @@ public class FestivalService {
             public void run() {
                 FestivalStatisticsThread statsThread = new FestivalStatisticsThread(festivalGate);
                 statsThread.start();
-                System.out.println(" 11111");
             };
         };
 
@@ -30,7 +28,6 @@ public class FestivalService {
             public void run() {
                 FestivalAttendeeThread festivalAttendee = new FestivalAttendeeThread(TicketType.getRandom(), festivalGate);
                 festivalAttendee.start();
-                System.out.println(" 22222");
             };
         };
 

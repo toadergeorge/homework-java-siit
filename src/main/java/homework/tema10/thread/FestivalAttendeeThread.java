@@ -12,14 +12,10 @@ public class FestivalAttendeeThread extends Thread {
     public FestivalAttendeeThread(TicketType ticketType, FestivalGate gate) {
         this.festivalGate   = gate;
         this.ticketType     = ticketType;
-
     }
 
     @SneakyThrows
-    public void run(String s) {
-
-        System.out.println("client ==== " + this.ticketType.name());
-
+    public void run() {
         this.festivalGate.ticketQueue.offer(this.ticketType);
         Thread.sleep(5);
     }

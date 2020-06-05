@@ -11,7 +11,7 @@ public class FestivalStatisticsThread extends Thread {
     }
 
     @SneakyThrows
-    public void run(String s) {
+    public void run() {
             System.out.println("statistic ==== ");
             Thread.sleep(10);
     }
