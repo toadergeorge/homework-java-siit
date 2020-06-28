@@ -2,12 +2,13 @@ package homework.tema12.repository;
 
 import homework.tema12.entity.Product;
 import homework.tema12.exception.DatabaseException;
+import homework.tema12.service.DbConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAOImpl implements ProductRepository{
+public class ProductDAOImpl extends DbConnection implements ProductRepository{
     @Override
     public void save(Product product) {
         String query = "" +
@@ -131,6 +132,8 @@ public class ProductDAOImpl implements ProductRepository{
 
             rowsAffected = preparedStatement.executeUpdate();
         } catch (SQLException e) {
+
+            System.out.println("e.getMessage() = " + e.getMessage());
             System.out.println("Eror while deleting product");
             throw new DatabaseException(e);
         }
@@ -139,18 +142,6 @@ public class ProductDAOImpl implements ProductRepository{
             System.out.println("Product with code " + productCode + " was deleted successfuly");
         } else {
             System.out.println("Product with code " + productCode + " was not deleted!");
-        }
-    }
-
-    private PreparedStatement getPreparedStatement(String query) {
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/classicmodels?serverTimezone=EET",
-                    "root",
-                    "geo711490rge");
-            return connection.prepareStatement(query);
-        } catch (SQLException throwable) {
-            System.out.println("Error while getting connection");
-            throw new RuntimeException("Error while getting connection", throwable);
         }
     }
 }
