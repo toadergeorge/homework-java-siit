@@ -4,11 +4,11 @@ import homework.tema12.entity.Order;
 
 import java.util.List;
 
-public interface OrderRepository {
+public interface OrderRepository{
 
     void save(Order employee);
 
-    List<Order> findByOrderNumber(String orderNumber);
+    List<Order> findByOrderNumber(int orderNumber);
 
     void update(Order order);
 

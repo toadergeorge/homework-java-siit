@@ -142,10 +142,6 @@ public class ProductDAOImpl implements ProductRepository{
         }
     }
 
-
-
-
-
     private PreparedStatement getPreparedStatement(String query) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/classicmodels?serverTimezone=EET",

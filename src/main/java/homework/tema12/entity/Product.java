@@ -9,7 +9,6 @@ import lombok.*;
 @ToString
 public class Product {
     private String productCode;
-
     private String productName;
     private String productLine;
     private String productScale;
